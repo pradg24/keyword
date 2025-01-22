@@ -1,0 +1,21 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class KeywordFactory {
+    private static final Map<String, Class<? extends Keyword>> keywordMap = new HashMap<>();
+
+    static {
+        keywordMap.put("OpenBrowser", OpenBrowser.class);
+        keywordMap.put("NavigateToUrl", NavigateToUrl.class);
+        // Register other keywords accordingly
+    }
+
+    public static Keyword getKeywordInstance(String keywordName) throws Exception {
+        Class<? extends Keyword> keywordClass = keywordMap.get(keywordName);
+        if (keywordClass != null) {
+            return keywordClass.getDeclaredConstructor().newInstance();
+        } else {
+            throw new Exception("Keyword not found: " + keywordName);
+        }
+    }
+}
