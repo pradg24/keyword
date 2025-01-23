@@ -1,1 +1,106 @@
+Here are the three methods we’ve discussed so far, presented with their simplified request and response formats:
 
+1. CheckHoliday
+This method checks whether a specific date is a holiday for a branch, currency, or both.
+
+Request
+xml
+Copy
+Edit
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:web="http://www.example.com/holidayservice">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:CheckHoliday>
+         <web:branchCode>NY</web:branchCode>       <!-- Optional; mandatory for branch holidays -->
+         <web:currencyCode>USD</web:currencyCode>  <!-- Optional; mandatory for currency holidays -->
+         <web:date>2025-01-23</web:date>          <!-- Mandatory -->
+      </web:CheckHoliday>
+   </soapenv:Body>
+</soapenv:Envelope>
+Response
+xml
+Copy
+Edit
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:web="http://www.example.com/holidayservice">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:CheckHolidayResponse>
+         <web:isHoliday>true</web:isHoliday>            <!-- Whether the date is a holiday -->
+         <web:holidayType>Branch Holiday</web:holidayType> <!-- Type: Branch Holiday, Currency Holiday, or Both -->
+      </web:CheckHolidayResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+2. GetHolidaysByDateRange
+This method fetches holidays for a branch, currency, or both within a specific date range.
+
+Request
+xml
+Copy
+Edit
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:web="http://www.example.com/holidayservice">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetHolidaysByDateRange>
+         <web:branchCode>NY</web:branchCode>         <!-- Optional; mandatory for branch holidays -->
+         <web:currencyCode>USD</web:currencyCode>    <!-- Optional; mandatory for currency holidays -->
+         <web:startDate>2025-01-20</web:startDate>   <!-- Mandatory -->
+         <web:endDate>2025-01-25</web:endDate>       <!-- Mandatory -->
+      </web:GetHolidaysByDateRange>
+   </soapenv:Body>
+</soapenv:Envelope>
+Response
+xml
+Copy
+Edit
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:web="http://www.example.com/holidayservice">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:GetHolidaysByDateRangeResponse>
+         <web:holidays>
+            <web:holiday>
+               <web:date>2025-01-22</web:date>
+               <web:holidayType>Both</web:holidayType> <!-- Type: Branch Holiday, Currency Holiday, or Both -->
+            </web:holiday>
+            <web:holiday>
+               <web:date>2025-01-25</web:date>
+               <web:holidayType>Currency Holiday</web:holidayType>
+            </web:holiday>
+         </web:holidays>
+      </web:GetHolidaysByDateRangeResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
+3. CheckCutOffTime
+This method checks whether the current time (or a provided time) is past the cutoff time for a branch.
+
+Request
+xml
+Copy
+Edit
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:web="http://www.example.com/holidayservice">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:CheckCutOffTime>
+         <web:branchCode>NY</web:branchCode>   <!-- Mandatory -->
+         <web:time>16:30:00</web:time>         <!-- Optional; defaults to current time -->
+      </web:CheckCutOffTime>
+   </soapenv:Body>
+</soapenv:Envelope>
+Response
+xml
+Copy
+Edit
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:web="http://www.example.com/holidayservice">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:CheckCutOffTimeResponse>
+         <web:isPastCutOff>true</web:isPastCutOff>     <!-- Whether the time is past cutoff -->
+         <web:cutOffTime>15:00:00</web:cutOffTime>     <!-- Configured cutoff time -->
+      </web:CheckCutOffTimeResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
