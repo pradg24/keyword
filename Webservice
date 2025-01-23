@@ -1,0 +1,79 @@
+
+
+Operations
+
+1. CheckHoliday
+
+Purpose: Determine if a specific date is a holiday for a branch, currency, or both.
+
+Input Parameters:
+
+branchCode (Optional): Specifies the branch. Mandatory for branch holiday checks.
+
+currencyCode (Optional): Specifies the currency. Mandatory for currency holiday checks.
+
+date (Mandatory): The date to check.
+
+Output:
+
+isHoliday (Boolean): Indicates if the date is a holiday.
+
+holidayType (String): Specifies the type of holiday (“Branch Holiday”, “Currency Holiday”, or “Both”).
+
+Example:
+
+Input: branchCode=NY, currencyCode=USD, date=2025-01-23
+
+Output: isHoliday=true, holidayType=Both
+
+2. GetHolidaysByDateRange
+
+Purpose: Retrieve holidays for a branch, currency, or both within a specific date range.
+
+Input Parameters:
+
+branchCode (Optional): Specifies the branch. Mandatory for branch holiday checks.
+
+currencyCode (Optional): Specifies the currency. Mandatory for currency holiday checks.
+
+startDate (Mandatory): Start of the date range.
+
+endDate (Mandatory): End of the date range.
+
+Output:
+
+holidays (List): A collection of holidays with the following details:
+
+date (String): The holiday date.
+
+holidayType (String): Specifies the type of holiday (“Branch Holiday”, “Currency Holiday”, or “Both”).
+
+Example:
+
+Input: branchCode=NY, currencyCode=USD, startDate=2025-01-20, endDate=2025-01-25
+
+Output:
+
+holidays=[{date=2025-01-22, holidayType=Both}, {date=2025-01-25, holidayType=Currency Holiday}]
+
+3. CheckCutOffTime
+
+Purpose: Validate if a given or current time is past the cutoff time for a specific branch.
+
+Input Parameters:
+
+branchCode (Mandatory): Specifies the branch.
+
+time (Optional): The time to check. Defaults to the current time if not provided.
+
+Output:
+
+isPastCutOff (Boolean): Indicates if the given or current time is past the cutoff.
+
+cutOffTime (String): The configured cutoff time for the branch.
+
+Example:
+
+Input: branchCode=NY, time=16:30:00
+
+Output: isPastCutOff=true, cutOffTime=15:00:00
