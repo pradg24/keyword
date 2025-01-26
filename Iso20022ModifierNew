@@ -1,0 +1,52 @@
+import com.prowidesoftware.swift.model.mx.AbstractMX;
+import com.prowidesoftware.swift.model.mx.MxParseUtils;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathFactory;
+import java.util.Map;
+
+public class Iso20022Modifier {
+
+    public String modifyIso20022Message(String xmlInput, Map<String, String> xpathValuePairs) throws Exception {
+        // Parse the XML input into a generic AbstractMX object
+        AbstractMX message = AbstractMX.parse(xmlInput, MxParseUtils.getDefaultParser());
+
+        // Convert the message to a Document object
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document document = builder.parse(new InputSource(new StringReader(message.message())));
+
+        // Create an XPath instance
+        XPath xPath = XPathFactory.newInstance().newXPath();
+
+        // Iterate over the XPath-value pairs
+        for (Map.Entry<String, String> entry : xpathValuePairs.entrySet()) {
+            String expression = entry.getKey();
+            String newValue = entry.getValue();
+
+            // Evaluate the XPath expression to find the corresponding node
+            Node node = (Node) xPath.evaluate(expression, document, XPathConstants.NODE);
+
+            if (node != null) {
+                // Update the node's value
+                node.setTextContent(newValue);
+            } else {
+                // Handle the case where the node is not found
+                System.out.println("Node not found for expression: " + expression);
+            }
+        }
+
+        // Convert the modified Document back to a string
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        StringWriter writer = new StringWriter();
+        transformer.transform(new DOMSource(document), new StreamResult(writer));
+        String modifiedXml = writer.getBuffer().toString();
+
+        return modifiedXml;
+    }
+}
