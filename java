@@ -19,3 +19,22 @@ if (document != null) {
 
                 // Set the custom namespace context
                 xpath.setNamespaceContext(new CustomNamespaceContext(prefixToUriMap));
+
+
+  javax.xml.namespace.NamespaceContext namespaceContext = new javax.xml.namespace.NamespaceContext() {
+                public String getNamespaceURI(String prefix) {
+                    if ("Saa".equals(prefix)) {
+                        return "urn:swift:saa:xsd:saa.2.0";
+                    }
+                    return null;
+                }
+
+                public String getPrefix(String namespaceURI) {
+                    return null; // Not needed for this example
+                }
+
+                public java.util.Iterator getPrefixes(String namespaceURI) {
+                    return null; // Not needed for this example
+                }
+            };
+            xpath.setNamespaceContext(namespaceContext);
