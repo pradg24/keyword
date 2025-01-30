@@ -38,3 +38,7 @@ if (document != null) {
                 }
             };
             xpath.setNamespaceContext(namespaceContext);
+
+  XPathFactory xpathFactory = XPathFactory.newInstance("http://java.sun.com/jaxp/xpath/dom", "com.sun.org.apache.xpath.internal.jaxp.XPathFactoryImpl", ClassLoader.getSystemClassLoader());
+System.out.println("Document Element: " + document.getDocumentElement().getNodeName());
+  System.out.println("Namespace URI for Saa: " + document.getDocumentElement().lookupNamespaceURI("Saa"));
