@@ -1,0 +1,67 @@
+Got it! Here's the updated `pacs.008` message with the `Saa` namespace set to `urn:swift:saa:xsd:saa.2.0`:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.02" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:Saa="urn:swift:saa:xsd:saa.2.0"
+          xmlns:Sw="urn:iso:std:iso:20022:tech:xsd:Sw"
+          xmlns:SwInt="urn:iso:std:iso:20022:tech:xsd:SwInt"
+          xmlns:SwGbl="urn:iso:std:iso:20022:tech:xsd:SwGbl"
+          xmlns:SwSec="urn:iso:std:iso:20022:tech:xsd:SwSec">
+    <FIToFICstmrCdtTrf>
+        <GrpHdr>
+            <MsgId>123456789</MsgId>
+            <CreDtTm>2025-01-30T11:52:57</CreDtTm>
+            <NbOfTxs>1</NbOfTxs>
+            <SttlmInf>
+                <SttlmMtd>CLRG</SttlmMtd>
+            </SttlmInf>
+            <InstgAgt>
+                <FinInstnId>
+                    <BICFI>AAAAUS33XXX</BICFI>
+                </FinInstnId>
+            </InstgAgt>
+            <InstdAgt>
+                <FinInstnId>
+                    <BICFI>BBBBGB22XXX</BICFI>
+                </FinInstnId>
+            </InstdAgt>
+        </GrpHdr>
+        <CdtTrfTxInf>
+            <PmtId>
+                <InstrId>123456789</InstrId>
+                <EndToEndId>987654321</EndToEndId>
+            </PmtId>
+            <IntrBkSttlmAmt Ccy="USD">1000.00</IntrBkSttlmAmt>
+            <ChrgBr>SLEV</ChrgBr>
+            <Dbtr>
+                <Nm>John Doe</Nm>
+                <PstlAdr>
+                    <Ctry>US</Ctry>
+                    <AdrLine>123 Main Street</AdrLine>
+                </PstlAdr>
+            </Dbtr>
+            <DbtrAcct>
+                <Id>
+                    <IBAN>US12345678901234567890</IBAN>
+                </Id>
+            </DbtrAcct>
+            <Cdtr>
+                <Nm>Jane Smith</Nm>
+                <PstlAdr>
+                    <Ctry>GB</Ctry>
+                    <AdrLine>456 High Street</AdrLine>
+                </PstlAdr>
+            </Cdtr>
+            <CdtrAcct>
+                <Id>
+                    <IBAN>GB09876543210987654321</IBAN>
+                </Id>
+            </CdtrAcct>
+        </CdtTrfTxInf>
+    </FIToFICstmrCdtTrf>
+</Document>
+```
+
+If you need any further adjustments or additional namespaces, just let me know! 😊
