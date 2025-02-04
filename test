@@ -1,39 +1,15 @@
-High-Level Test Automation Strategy
-API-Driven Validation:
+Phase: Development
 
-Validate all business logic through API tests.
+Current Focus: Payments module on T24 application
 
-Swagger-Driven Development for APIs:
+Progress:
 
-Utilize Swagger to define and document APIs.
+Database Design: Completed
 
-Generate automated API tests from Swagger definitions.
+Proof of Concept (POC): Successfully done
 
-UI Automation:
+Current Focus: Developing the automation framework
 
-Identify and prioritize critical E2E flows.
+RAG Status: Green
 
-Focus only on critical E2E flows, minimizing unnecessary UI automation.
-
-Ensure UI automation targets essential user interactions.
-
-Test Data Strategy:
-
-Prefer API/DB setup over UI-based data creation.
-
-Implement automated cleanup scripts to avoid flaky tests.
-
-Run Tests in CI Pipeline:
-
-Integrate API and UI tests into the CI pipeline for faster feedback.
-
-Tools
-Playwright for UI Automation:
-
-Playwright will be our primary tool for UI automation due to its support for multiple browser contexts and its comprehensive testing capabilities.
-
-API Testing:
-
-Playwright offers basic API testing capabilities, which can be useful for initial validation and simple API tests.
-
-For more advanced API testing, we will use Rest Assured, which is a robust and mature library for API testing in the Java ecosystem.
+Comment: The project is progressing well with the completion of the database design and a successful proof of concept. The team is now focused on developing the automation framework for the Payments module on the T24 application. No major issues have been identified, and the project is on track.
