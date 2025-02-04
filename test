@@ -1,25 +1,21 @@
 High-Level Test Automation Strategy
-API Test Validation:
+API-Driven Validation:
 
-Validate all business logic through API tests using Rest Assured or Playwright.
+Validate all business logic through API tests.
 
 Swagger-Driven Development for APIs:
 
-Utilize Swagger/OpenAPI to define and document APIs.
+Utilize Swagger to define and document APIs.
 
 Generate automated API tests from Swagger definitions.
 
-Use mock services and server stubs.
-
-Integrate API tests into CI/CD pipeline.
-
-Maintain versioned API documentation.
-
-Critical E2E Flows:
+UI Automation:
 
 Identify and prioritize critical E2E flows.
 
-Minimize UI automation, focusing on essential user interactions.
+Focus only on critical E2E flows, minimizing unnecessary UI automation.
+
+Ensure UI automation targets essential user interactions.
 
 Test Data Strategy:
 
@@ -27,20 +23,17 @@ Prefer API/DB setup over UI-based data creation.
 
 Implement automated cleanup scripts to avoid flaky tests.
 
-Run API Tests in CI Pipeline:
+Run Tests in CI Pipeline:
 
-Integrate API tests into the CI pipeline for faster feedback.
+Integrate API and UI tests into the CI pipeline for faster feedback.
 
-Configure parallel test execution.
+Tools
+Playwright for UI Automation:
 
-Generate detailed test reports and set up alerts.
+Playwright will be our primary tool for UI automation due to its support for multiple browser contexts and its comprehensive testing capabilities.
 
-UI Automation with Playwright or Selenium:
+API Testing:
 
-Playwright preferred for its support for multiple browser contexts in a single test.
+Playwright offers basic API testing capabilities, which can be useful for initial validation and simple API tests.
 
-Layered Testing Approach (excluding unit tests):
-
-Combine integration tests and E2E tests.
-
-Ensure each layer covers different aspects of the application without including unit tests.
+For more advanced API testing, we will use Rest Assured, which is a robust and mature library for API testing in the Java ecosystem.
