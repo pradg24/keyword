@@ -13,3 +13,4 @@
     <artifactId>xdb</artifactId>
     <version>21.1.0.0</version>
 </dependency>
+mvn install:install-file -Dfile=path\to\xdb.jar -DgroupId=com.oracle.database.xml -DartifactId=xdb -Dversion=19.8.0.0 -Dpackaging=jar
