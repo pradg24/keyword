@@ -1,15 +1,15 @@
-Phase: Development
+<repositories>
+    <repository>
+        <id>oracle-maven-repo</id>
+        <url>https://maven.oracle.com</url>
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+    </repository>
+</repositories>
 
-Current Focus: Payments module on T24 application
-
-Progress:
-
-Database Design: Completed
-
-Proof of Concept (POC): Successfully done
-
-Current Focus: Developing the automation framework
-
-RAG Status: Green
-
-Comment: The project is progressing well with the completion of the database design and a successful proof of concept. The team is now focused on developing the automation framework for the Payments module on the T24 application. No major issues have been identified, and the project is on track.
+<dependency>
+    <groupId>com.oracle.database.xml</groupId>
+    <artifactId>xdb</artifactId>
+    <version>21.1.0.0</version>
+</dependency>
