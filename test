@@ -1,16 +1,4 @@
-<repositories>
-    <repository>
-        <id>oracle-maven-repo</id>
-        <url>https://maven.oracle.com</url>
-        <releases>
-            <enabled>true</enabled>
-        </releases>
-    </repository>
-</repositories>
-
-<dependency>
-    <groupId>com.oracle.database.xml</groupId>
-    <artifactId>xdb</artifactId>
-    <version>21.1.0.0</version>
-</dependency>
+File file = new File(filePath);
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+                writer.write(content);
 mvn install:install-file -Dfile=path\to\xdb.jar -DgroupId=com.oracle.database.xml -DartifactId=xdb -Dversion=19.8.0.0 -Dpackaging=jar
